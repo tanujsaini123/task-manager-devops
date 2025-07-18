@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-quote-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: image-quote-app
+  template:
+    metadata:
+      labels:
+        app: image-quote-app
+    spec:
+      containers:
+      - name: image-quote-container
+        image: tanujkumar123/image-quote-app:latest
+        ports:
+        - containerPort: 5000
