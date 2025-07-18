@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string, send_from_directory
+from flask import Flask, send_from_directory
 import random
 import os
 
@@ -12,7 +12,7 @@ quotes = [
 
 @app.route('/')
 def home():
-    images = os.listdir('frontend/static/images')
+    images = os.listdir('static/images')
     image = random.choice(images)
     selected = random.choice(quotes)
 
@@ -31,7 +31,8 @@ def home():
 
 @app.route('/images/<filename>')
 def get_image(filename):
-    return send_from_directory('frontend/static/images', filename)
+    return send_from_directory('static/images', filename)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+    
